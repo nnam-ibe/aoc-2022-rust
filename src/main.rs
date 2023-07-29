@@ -1,17 +1,22 @@
-// use crate::day1::top_three;
-// use day1::top;
-// mod day1;
+mod a2022;
 
-use day2::{run, run2};
-mod day2;
-mod utils;
+use a2022::run;
+
+pub enum Days {
+    Day1,
+    Day2,
+}
 
 fn main() {
-    // println!("----first-----");
-    // top();
-    // println!("---second-----");
-    // top_three();
+    let args: Vec<String> = std::env::args().collect();
+    let val = match args.get(1) {
+        None => unreachable!("Specify a reachable day!"),
+        Some(val) => val,
+    };
 
-    run();
-    run2();
+    match val.as_str() {
+        "1" => run(Days::Day1),
+        "2" => run(Days::Day2),
+        _ => unreachable!("Day not done yet"),
+    }
 }
