@@ -28,4 +28,32 @@ pub fn run() {
         .sum();
 
     println!("Part 1: {}", sum);
+
+    // PART 2
+    let lines: Vec<&str> = include_str!("input").lines().collect();
+    let priorities: usize = lines
+        .chunks(3)
+        .map(|chunk| {
+            let mut first: HashSet<char> = chunk[0].chars().collect();
+            let second: HashSet<char> = chunk[1].chars().collect();
+            let third: HashSet<char> = chunk[2].chars().collect();
+
+            first.clone().into_iter().for_each(|f| {
+                if !second.contains(&f) {
+                    first.remove(&f);
+                } else if !third.contains(&f) {
+                    first.remove(&f);
+                }
+            });
+
+            let res = first.into_iter().take(1).next();
+            return match res {
+                None => unreachable!("There should be at least one match"),
+                Some(val) => val,
+            };
+        })
+        .map(|x| get_code(&x))
+        .sum();
+
+    println!("Part 2: {}", priorities);
 }
