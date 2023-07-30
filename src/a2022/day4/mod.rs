@@ -11,6 +11,16 @@ pub fn run() {
         .count();
 
     println!("Part 1: {}", res);
+
+    let res = include_str!("input")
+        .lines()
+        .flat_map(str::parse::<Pair>)
+        .filter(|h| {
+            return (h.p1_h >= h.p2_l) && (h.p1_l <= h.p2_h);
+        })
+        .count();
+
+    println!("Part 2: {}", res);
 }
 
 struct Pair {
