@@ -6,6 +6,7 @@ pub enum Days {
     Day1,
     Day2,
     Day3,
+    Day4,
 }
 
 fn main() {
@@ -19,6 +20,7 @@ fn main() {
         "1" => run(Days::Day1),
         "2" => run(Days::Day2),
         "3" => run(Days::Day3),
+        "4" => run(Days::Day4),
         _ => unreachable!("Day not done yet"),
     }
 }
