@@ -2,6 +2,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 use super::Days;
 
@@ -11,5 +12,6 @@ pub fn run(d: Days) {
         Days::Day2 => day2::run(),
         Days::Day3 => day3::run(),
         Days::Day4 => day4::run(),
+        Days::Day5 => day5::run(),
     }
 }
